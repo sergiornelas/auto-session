@@ -133,7 +133,7 @@ end
 local function snacks_session_search()
   local mappings = Config.session_lens.mappings or {}
   Snacks.picker.pick {
-    title = "Sessions",
+    title = "Teleport 󱓞 ",
     finder = function()
       return Lib.get_session_list(M.AutoSession.get_root_dir())
     end,
@@ -142,7 +142,13 @@ local function snacks_session_search()
       item.text = item.display_name
     end,
     layout = {
-      preview = Config.session_lens.theme_conf.preview,
+      preset = "select",
+      layout = {
+        width = 0.55,
+        min_width = 55,
+        height = 0.3,
+        border = "single",
+      },
     },
     win = {
       input = {
