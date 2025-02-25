@@ -641,7 +641,9 @@ function Lib.get_session_list(sessions_dir)
     return {}
   end
 
-  local entries = Lib.sorted_readdir(sessions_dir)
+  local entries = vim.fn.readdir(sessions_dir, function(item)
+    return Lib.is_session_file(sessions_dir .. item)
+  end)
 
   return vim.tbl_map(function(file_name)
     local session_name
